@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Aşkım, Projemiz Hazır!</title>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+      var player;
+      var music = new Audio("C:\\Users\\Zehra\\Downloads\\Hani Gökbörü_ _ Bozkurt Nerede_ [MdLII-xyLFI].mp3"); // MP3 Şarkı
+      
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          height: '390',
+          width: '640',
+          videoId: 'sk3WLFTRswc', // Ders videosunun ID'si
+          events: {
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PAUSED) {
+          music.play(); // Şarkıyı başlat
+        } else if (event.data == YT.PlayerState.PLAYING) {
+          music.pause(); // Ders devam ederse şarkıyı durdur
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <!-- Ders videosu -->
+    <div id="player"></div>
+  </body>
+</html>
